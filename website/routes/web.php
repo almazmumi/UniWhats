@@ -16,8 +16,17 @@
 // });
 
 
-Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('auth') -> group(function(){
+    Route::get('init', 'AppController@init');
+    Route::post('login', 'AppController@login');
+    Route::post('register', 'AppController@register');
+    Route::post('logout', 'AppController@logout');
+    Route::post('login', 'AppController@login');
+
+});
+
+Route::get('/{any}', 'SpaController@index')->where('any', '.*');

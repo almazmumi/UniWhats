@@ -1,87 +1,106 @@
 <template>
   <div class="home">
-    <GroupTemplate v-for="group in filteredGroups" v-bind:key="group.id"
-    :courseName="group.course_name"
-    :courseCode="group.course_code"
-    :sectionNumber="group.section_number"
-    :instructorName="group.instructor_name"
-    :url="group.url"
-    :semesterNumber="group.semester_number"/>
-    <pagination :data="groups" @pagination-change-page="getResults" :limit="1"></pagination>
+    <GroupTemplate
+      v-for="group in ffilteredGroups.data"
+      v-bind:key="group.id"
+      :courseName="group.course_name"
+      :courseCode="group.course_code"
+      :sectionNumber="group.section_number"
+      :instructorName="group.instructor_name"
+      :url="group.url"
+      :semesterNumber="group.semester_number"
+    />
+    <pagination :data="ffilteredGroups" @pagination-change-page="getResults" :limit="1"></pagination>
   </div>
-
-
 </template>
 
 <script>
 // @ is an alias to /src
-import GroupTemplate from "../components/Group.vue"
-import {bus} from "../app"
+import GroupTemplate from "../components/Group.vue";
+import { bus } from "../app";
 export default {
   name: "home",
-  data: function(){
-      return {
-          groups: {},
-          searchKey:"",
-          users: {}
-      }
+  data: function() {
+    return {
+      groups: {},
+      searchKey: "",
+      users: {}
+    };
   },
   components: {
     GroupTemplate
   },
-  created(){
-      bus.$on("newSearchKey", (data)=>(this.searchKey = data));
-        this.getResults();
+  created() {
+    bus.$on("newSearchKey", data => (this.searchKey = data));
+    this.getResults();
+
+    const data = {
+      email: "jdawe02@gmail.com",
+      password: 1231231
+    };
+    axios.post("auth/login", data)
+    .then(response => {
+      // this.$router.push("/");
+      console.log(response);
+    });
+
   },
-  methods:{
-
-      getResults(page = 1) {
-			axios.get('api/group?page=' + page)
-				.then(response => {
-                    this.groups = response;
-                    consoe.log(response);
-				});
-		}
-
+  methods: {
+    getResults(page = 1) {
+      axios.get("api/group?page=" + page).then(response => {
+        this.groups = response.data;
+      });
+    }
   },
   computed: {
-      filteredGroups: function(){
-          if (!this.groups.data) return this.groups;
-
-            // return this.groups.data.filter(group => `${group.course_name} ${group.course_code}`.toLowerCase().match(this.searchKey.toLowerCase()))
-
-      }
+    filteredGroups: function() {
+      if (!this.groups.data) return this.groups;
+      return this.groups.data.filter(group =>
+        `${group.course_name} ${group.course_code}`
+          .toLowerCase()
+          .match(this.searchKey.toLowerCase())
+      );
+    },
+    ffilteredGroups: function() {
+      if (!this.groups.data) return this.groups;
+      this.users = Vue.util.extend({}, this.groups);
+      this.users.data = this.groups.data.filter(group =>
+        `${group.course_name} ${group.course_code}`
+          .toLowerCase()
+          .match(this.searchKey.toLowerCase())
+      );
+      return this.users;
+    }
   }
-}
+};
 </script>
 <style>
-    .pagination{
-            display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 40px;
-    }
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 40px;
+}
 
-    .pagination li{
-list-style-type: none;
-    display: inline-block;
-    background-color: rgba(0, 191, 166, 0.356);
-    padding: 10px;
-    width: 10px;
-    height: 10px;
-    line-height: 10px;
-    border-radius: 50%;
-    text-decoration: none;
-    color: #fff;
-    }
+.pagination li {
+  list-style-type: none;
+  display: inline-block;
+  background-color: rgba(0, 191, 166, 0.356);
+  padding: 10px;
+  width: 10px;
+  height: 10px;
+  line-height: 10px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+}
 
-    .pagination a{
-            text-decoration: none;
-    color: #fff;
+.pagination a {
+  text-decoration: none;
+  color: #fff;
+}
 
-    }
-
-    .page-item.pagination-page-nav.active{
-        background-color: rgb(0, 191, 165);;
-    }
+.page-item.pagination-page-nav.active {
+  background-color: rgb(0, 191, 165);
+}
 </style>

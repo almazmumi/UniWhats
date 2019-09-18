@@ -2018,6 +2018,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 // @ is an alias to /src
 
 
@@ -2040,21 +2041,43 @@ __webpack_require__.r(__webpack_exports__);
       return _this.searchKey = data;
     });
     this.getResults();
+    var data = {
+      email: "jdawe02@gmail.com",
+      password: 1231231
+    };
+    axios.post("auth/login", data).then(function (response) {
+      // this.$router.push("/");
+      console.log(response);
+    });
   },
   methods: {
     getResults: function getResults() {
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('api/group?page=' + page).then(function (response) {
-        _this2.groups = response;
-        consoe.log(response);
+      axios.get("api/group?page=" + page).then(function (response) {
+        _this2.groups = response.data;
       });
     }
   },
   computed: {
     filteredGroups: function filteredGroups() {
-      if (!this.groups.data) return this.groups; // return this.groups.data.filter(group => `${group.course_name} ${group.course_code}`.toLowerCase().match(this.searchKey.toLowerCase()))
+      var _this3 = this;
+
+      if (!this.groups.data) return this.groups;
+      return this.groups.data.filter(function (group) {
+        return "".concat(group.course_name, " ").concat(group.course_code).toLowerCase().match(_this3.searchKey.toLowerCase());
+      });
+    },
+    ffilteredGroups: function ffilteredGroups() {
+      var _this4 = this;
+
+      if (!this.groups.data) return this.groups;
+      this.users = Vue.util.extend({}, this.groups);
+      this.users.data = this.groups.data.filter(function (group) {
+        return "".concat(group.course_name, " ").concat(group.course_code).toLowerCase().match(_this4.searchKey.toLowerCase());
+      });
+      return this.users;
     }
   }
 });
@@ -6607,7 +6630,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.pagination{\n            display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 40px;\n}\n.pagination li{\nlist-style-type: none;\n    display: inline-block;\n    background-color: rgba(0, 191, 166, 0.356);\n    padding: 10px;\n    width: 10px;\n    height: 10px;\n    line-height: 10px;\n    border-radius: 50%;\n    text-decoration: none;\n    color: #fff;\n}\n.pagination a{\n            text-decoration: none;\n    color: #fff;\n}\n.page-item.pagination-page-nav.active{\n        background-color: rgb(0, 191, 165);\n}\n", ""]);
+exports.push([module.i, "\n.pagination {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  padding: 0 40px;\n}\n.pagination li {\n  list-style-type: none;\n  display: inline-block;\n  background-color: rgba(0, 191, 166, 0.356);\n  padding: 10px;\n  width: 10px;\n  height: 10px;\n  line-height: 10px;\n  border-radius: 50%;\n  text-decoration: none;\n  color: #fff;\n}\n.pagination a {\n  text-decoration: none;\n  color: #fff;\n}\n.page-item.pagination-page-nav.active {\n  background-color: rgb(0, 191, 165);\n}\n", ""]);
 
 // exports
 
@@ -39895,7 +39918,7 @@ var render = function() {
     "div",
     { staticClass: "home" },
     [
-      _vm._l(_vm.filteredGroups, function(group) {
+      _vm._l(_vm.ffilteredGroups.data, function(group) {
         return _c("GroupTemplate", {
           key: group.id,
           attrs: {
@@ -39910,7 +39933,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("pagination", {
-        attrs: { data: _vm.groups, limit: 1 },
+        attrs: { data: _vm.ffilteredGroups, limit: 1 },
         on: { "pagination-change-page": _vm.getResults }
       })
     ],
@@ -55639,8 +55662,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jdawe\Desktop\universityWhatsapp\new\UniWhats\uniwhats\uniwhats\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jdawe\Desktop\universityWhatsapp\new\UniWhats\uniwhats\uniwhats\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Faiqah\Desktop\SideProjects\UniWhats\website\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Faiqah\Desktop\SideProjects\UniWhats\website\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
