@@ -1,0 +1,21 @@
+[
+    {
+        "id":1,
+        "instructur_fname":"Norbert",
+        "instructur_lname":"Torns",
+        "course_code":"324",
+        "section_number":46,
+        "url":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl",
+        "course_name":"COE",
+        "semester_number":"191"
+    },
+{"id":2,"instructur_fname":"Kahlil","instructur_lname":"Razzell","course_code":"324","section_number":8,"grl":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"COE","semester_number":192},
+{"id":3,"instructur_fname":"Liza","instructur_lname":"Annes","course_code":"324","section_number":7,"grl":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"ICS","semester_number":191},
+{"id":4,"instructur_fname":"Ekaterina","instructur_lname":"Camis","course_code":"324","section_number":48,"url":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"ICS","semester_number":192},
+{"id":5,"instructur_fname":"Milka","instructur_lname":"McMechan","course_code":"324","section_number":35,"url":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"ICS","semester_number":191},
+{"id":6,"instructur_fname":"Callida","instructur_lname":"Jelf","course_code":"324","section_number":19,"url":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"SWE","semester_number":192},
+{"id":7,"instructur_fname":"Richie","instructur_lname":"Drewet","course_code":"324","section_number":48,"url":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"COE","semester_number":191},
+{"id":8,"instructur_fname":"Ambrosio","instructur_lname":"Ilyenko","course_code":"324","section_number":65,"url":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"SWE","semester_number":191},
+{"id":9,"instructur_fname":"Alexis","instructur_lname":"Bene","course_code":"324","section_number":54,"url":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"ICS","semester_number":191},
+{"id":10,"instructur_fname":"Lorrie","instructur_lname":"Addis","course_code":"324","section_number":12,"url":"https://chat.whatsapp.com/I9PnM4B16Z9BoYWPCECJEl","course_name":"COE","semester_number":182}
+]
