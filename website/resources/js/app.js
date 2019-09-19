@@ -1,49 +1,33 @@
-require('./bootstrap');
-
-window.Vue = require('vue');
-
-
+import 'es6-promise/auto'
+import axios from 'axios'
+import './bootstrap'
 import Vue from 'vue'
+import VueAuth from '@websanova/vue-auth'
+import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+import Index from './Index'
+import auth from './auth'
+import router from './router'
 
-Vue.component('pagination', require('laravel-vue-pagination'));
 export const bus = new Vue();
 
-import App from './views/App'
-import Login from './views/Login'
-import Signup from './views/Signup'
-import Home from './views/Home'
+
+// Set Vue globally
+window.Vue = Vue
+
+// Set Vue router
+Vue.router = router
+Vue.use(VueRouter)
+
+// Set Vue authentication
+Vue.use(VueAxios, axios)
+axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
+Vue.use(VueAuth, auth)
 
 
-const router = new VueRouter({
-    mode: 'history',
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: Home
-        },
-        {
-            path: '/Login',
-            name: 'login',
-            component: Login,
-        },
-        {
-            path: '/signup',
-            name: 'Sign up',
-            component: Signup,
-        },
-    ],
-});
-
+// Load Index
+Vue.component('index', Index)
 const app = new Vue({
-    el: '#app',
-    components: { App },
-    router,
+  el: '#app',
+  router
 });
-
-
-
-
-

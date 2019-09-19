@@ -17,7 +17,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        return Group::latest()->paginate(5);
+        return Group::all();
     }
 
     /**

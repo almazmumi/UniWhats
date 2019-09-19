@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <GroupTemplate
-      v-for="group in ffilteredGroups.data"
+      v-for="group in filteredGroups"
       v-bind:key="group.id"
       :courseName="group.course_name"
       :courseCode="group.course_code"
@@ -10,7 +10,7 @@
       :url="group.url"
       :semesterNumber="group.semester_number"
     />
-    <pagination :data="ffilteredGroups" @pagination-change-page="getResults" :limit="1"></pagination>
+    <!-- <pagination :data="ffilteredGroups" @pagination-change-page="getResults" :limit="1"></pagination> -->
   </div>
 </template>
 
@@ -22,9 +22,8 @@ export default {
   name: "home",
   data: function() {
     return {
-      groups: {},
-      searchKey: "",
-      users: {}
+      groups: [],
+      searchKey: ""
     };
   },
   components: {
@@ -33,44 +32,34 @@ export default {
   created() {
     bus.$on("newSearchKey", data => (this.searchKey = data));
     this.getResults();
-
-    const data = {
-      email: "jdawe02@gmail.com",
-      password: 1231231
-    };
-    axios.post("auth/login", data)
-    .then(response => {
-      // this.$router.push("/");
-      console.log(response);
-    });
-
   },
   methods: {
-    getResults(page = 1) {
-      axios.get("api/group?page=" + page).then(response => {
-        this.groups = response.data;
-      });
+    getResults() {
+    //   axios.get("api/group").then(response => {
+    //     this.groups = response.data;
+    //   });
+
+        this.$http({
+          url: `group`,
+          method: 'GET'
+        })
+            .then((res) => {
+              this.groups = res.data;
+            }, () => {
+
+            });
     }
   },
   computed: {
     filteredGroups: function() {
-      if (!this.groups.data) return this.groups;
-      return this.groups.data.filter(group =>
+      if (!this.groups) return this.groups;
+
+      return this.groups.filter(group =>
         `${group.course_name} ${group.course_code}`
           .toLowerCase()
           .match(this.searchKey.toLowerCase())
       );
     },
-    ffilteredGroups: function() {
-      if (!this.groups.data) return this.groups;
-      this.users = Vue.util.extend({}, this.groups);
-      this.users.data = this.groups.data.filter(group =>
-        `${group.course_name} ${group.course_code}`
-          .toLowerCase()
-          .match(this.searchKey.toLowerCase())
-      );
-      return this.users;
-    }
   }
 };
 </script>

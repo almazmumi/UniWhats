@@ -29,4 +29,9 @@ Route::prefix('auth') -> group(function(){
 
 });
 
+
+// Route to handle page reload in Vue except for api routes
+// Route::get('/{any?}', function (){return view('spa');})->where('any', '^(?!api\/)[\/\w\.-]*');
+
+
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

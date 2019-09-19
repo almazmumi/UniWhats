@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+Route::apiResources(['group' => 'GroupController']);
+
 Route::prefix('auth')->group(function () {
     Route::post('register', 'AuthController@register');
     Route::post('login', 'AuthController@login');
@@ -28,4 +30,4 @@ Route::prefix('auth')->group(function () {
 });
 
 
-Route::apiResources(['group' => 'GroupController']);
+
