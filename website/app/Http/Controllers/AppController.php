@@ -23,7 +23,7 @@ class AppController extends Controller
     public function register(Request $request){
         $user = User::where('email', $request -> email)-> first();
 
-        if(isset($user -> id)){
+        if(isset($user -> u_id)){
             return response()-> json(['error' => 'Email is already exists'], 401);
         }
 

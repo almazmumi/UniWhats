@@ -5,7 +5,6 @@
       <div class="signupform__username">
         <p class="username_text">First Name</p>
         <input type="text" v-model="fname" />
-        <p class="validation-text" v-text="nameValidation"></p>
       </div>
       <div class="signupform__username">
         <p class="username_text">Last Name</p>
@@ -20,12 +19,12 @@
       <div class="signupform__confirm-password">
         <p class="username_text">Confirm Password</p>
         <input type="password" v-model="password_confirmation" />
-        <p class="validation-text" v-text="password_confirmation"></p>
+        <p class="validation-text" v-text="confirmPasswordValidation"></p>
       </div>
       <div class="signupform__email">
         <p class="username_text">Email</p>
         <input type="email" v-model="email" />
-        <p class="validation-text"></p>
+        <p class="validation-text" v-text="emailValidation"></p>
       </div>
       <div class="signupform__submit">
         <button :disabled="!submitDisable" type="submit">Sign up</button>
@@ -79,6 +78,14 @@ export default {
         this.passwordHasError = true;
       }
     },
+    emailValidation: function() {
+      if (!this.email.toLowerCase().includes("@kfupm.edu.sa") && this.email.length != 0) {
+        this.passwordHasError = false;
+        return "Register with your university email!";
+      } else {
+        this.passwordHasError = true;
+      }
+    },
     submitDisable: function(){
         return this.nameHasError && this.passwordHasError;
     }
@@ -93,7 +100,16 @@ export default {
           password: this.password,
           password_confirmation: this.password_confirmation,
           role: 1
-        }
+        },success: function () {
+            app.success = true;
+            this.$router.push({name: 'login'});
+          },
+          error: function (res) {
+            console.log(res.response.data.errors)
+            // app.has_error = true
+            // app.error = res.response.data.error
+            // app.errors = res.response.data.errors || {}
+          }
       });
     }
   }
@@ -113,7 +129,7 @@ export default {
 .signupForm {
   /* margin: 0 3rem; */
   width: 70%;
-  margin: 0 auto;
+  margin: 10px auto;
   position: relative;
 }
 .signupform__username,
@@ -144,9 +160,11 @@ export default {
 .signupform__email input:focus {
   border: 2px solid #77d7c988;
 }
+
+
 .title {
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   font-weight: 800;
   z-index: -1;
 }

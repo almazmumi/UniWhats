@@ -1274,7 +1274,6 @@ module.exports = (function (){
 
 module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/lib/axios.js");
 
-
 /***/ }),
 
 /***/ "./node_modules/axios/lib/adapters/xhr.js":
@@ -3077,6 +3076,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import JsonDummyData from "../json/JsonDatabase.json";
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3250,6 +3260,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Login.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Login.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      fname: "",
+      lname: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+      nameHasError: false,
+      passwordHasError: false,
+      emailHasError: false
+    };
+  },
+  methods: {
+    login: function login() {
+      console.log("111");
+      this.$auth.login({
+        data: {
+          email: this.email,
+          password: this.password
+        },
+        success: function success() {
+          app.success = true;
+          this.$router.push({
+            name: 'home'
+          });
+        },
+        error: function error(res) {
+          console.log(res.response.data.errors); // app.has_error = true
+          // app.error = res.response.data.error
+          // app.errors = res.response.data.errors || {}
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Signup.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Signup.vue?vue&type=script&lang=js& ***!
@@ -3259,7 +3339,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -3339,6 +3418,14 @@ __webpack_require__.r(__webpack_exports__);
         this.passwordHasError = true;
       }
     },
+    emailValidation: function emailValidation() {
+      if (!this.email.toLowerCase().includes("@kfupm.edu.sa") && this.email.length != 0) {
+        this.passwordHasError = false;
+        return "Register with your university email!";
+      } else {
+        this.passwordHasError = true;
+      }
+    },
     submitDisable: function submitDisable() {
       return this.nameHasError && this.passwordHasError;
     }
@@ -3353,6 +3440,17 @@ __webpack_require__.r(__webpack_exports__);
           password: this.password,
           password_confirmation: this.password_confirmation,
           role: 1
+        },
+        success: function success() {
+          app.success = true;
+          this.$router.push({
+            name: 'login'
+          });
+        },
+        error: function error(res) {
+          console.log(res.response.data.errors); // app.has_error = true
+          // app.error = res.response.data.error
+          // app.errors = res.response.data.errors || {}
         }
       });
     }
@@ -7818,7 +7916,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat&display=swap);", ""]);
 
 // module
-exports.push([module.i, "\n#app {\n  font-family: \"Montserrat\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  position: relative;\n  font-family: \"Montserrat\", sans-serif;\n}\n#nav {\n  padding: 30px;\n}\n#nav a {\n  font-weight: bold;\n  color: #2c3e50;\n}\n#nav a.router-link-exact-active {\n  color: #42b983;\n}\n\n/* Header Styles */\n.navbarr {\n  display: flex;\n  flex-direction: column;\n  background-color: #00bfa5;\n  justify-content: space-between;\n  box-shadow: 0px 3px 17px 0px rgb(202, 202, 202);\n  padding: 25px;\n}\n.navbarr img {\n  width: 60px;\n}\n.navbar__header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  height: 30px;\n}\n.navbar__munu-icons {\n  height: 30px;\n}\n.header__menu-icons i {\n  color: #fff;\n  padding-left: 25px;\n  font-size: 22.5px;\n  line-height: 30px;\n}\n.navbar__menu {\n  height: 0px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  color: #fff;\n  transition: all 350ms ease-in-out;\n  z-index: 102121;\n  position: relative;\n}\n.munushow {\n  height: 35vh;\n}\n.menu__describtion {\n  text-align: start;\n  padding: 20px 0px;\n  font-size: 18px;\n  line-height: 26px;\n}\n.menu__links {\n  padding: 0;\n  text-align: center;\n  color: white;\n  font-weight: 800;\n  font-size: 20px;\n}\n.menu__links li {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  margin-bottom: 10px;\n}\n.navbar__search {\n  height: 0;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  align-items: center;\n  padding-top: 0;\n  transition: all 350ms ease-in-out;\n  padding-bottom: 20px;\n}\n.searchshow {\n  height: 150px;\n  padding-top: 25px;\n  padding-bottom: 25;\n}\n.search__search-by-name,\n.search__search-parameters {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  margin: 0 auto;\n  padding: 10px;\n  width: 70vw;\n  height: 26px;\n  background-color: rgb(255, 255, 255);\n  border-radius: 80px;\n  font-size: 15px;\n  box-shadow: 0px 3px 17px 0px rgba(148, 148, 148, 0.123);\n}\n.search__search-parameters {\n  background-color: rgba(255, 255, 255, 0.671);\n  box-shadow: none;\n}\n.search__search-by-name {\n  opacity: 1;\n  transition: all 350ms ease-in-out;\n  position: fixed;\n  top: 76px;\n  z-index: 1200;\n}\n.searchfixed {\n  z-index: 1200;\n  opacity: 1;\n  top: calc(100px);\n}\n.searchdown {\n  top: calc(35vh + 75px);\n}\n.search__search-by-name i {\n  line-height: 26px;\n  position: relative;\n  color: black;\n  padding-right: 10px;\n}\n.search__search-by-name input,\n.search__search-parameters select {\n  width: 100%;\n  background-color: transparent;\n  border: none;\n  padding-left: 10px;\n  outline: none;\n}\n.search__search-by-name:hover {\n  opacity: 1;\n}\n.search__search-by-name input::-webkit-input-placeholder {\n  color: rgba(0, 0, 0, 0.596);\n  font-weight: 500;\n  font-family: Arial;\n}\n.search__search-by-name input::-moz-placeholder {\n  color: rgba(0, 0, 0, 0.596);\n  font-weight: 500;\n  font-family: Arial;\n}\n.search__search-by-name input:-ms-input-placeholder {\n  color: rgba(0, 0, 0, 0.596);\n  font-weight: 500;\n  font-family: Arial;\n}\n.search__search-by-name input::-ms-input-placeholder {\n  color: rgba(0, 0, 0, 0.596);\n  font-weight: 500;\n  font-family: Arial;\n}\n.search__search-by-name input::placeholder {\n  color: rgba(0, 0, 0, 0.596);\n  font-weight: 500;\n  font-family: Arial;\n}\n.searchbynamenoopacity {\n  opacity: 0.3;\n  /* transition: all 350ms ease-in-out; */\n}\n.hideSearchBar{\n  opacity: 0;\n}\n.collapseNavbarHeader{\n  height: 10px;\n}\n", ""]);
+exports.push([module.i, "\n#app {\r\n  font-family: \"Montserrat\", sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  position: relative;\r\n  font-family: \"Montserrat\", sans-serif;\n}\n#nav {\r\n  padding: 30px;\n}\n#nav a {\r\n  font-weight: bold;\r\n  color: #2c3e50;\n}\n#nav a.router-link-exact-active {\r\n  color: #42b983;\n}\r\n\r\n/* Header Styles */\n.navbarr {\r\n  display: flex;\r\n  flex-direction: column;\r\n  background-color: #00bfa5;\r\n  justify-content: space-between;\r\n  box-shadow: 0px 3px 17px 0px rgb(202, 202, 202);\r\n  padding: 25px;\n}\n.navbarr img {\r\n  width: 60px;\n}\n.navbar__header {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  height: 30px;\n}\n.navbar__munu-icons {\r\n  height: 30px;\n}\n.header__menu-icons i {\r\n  color: #fff;\r\n  padding-left: 25px;\r\n  font-size: 22.5px;\r\n  line-height: 30px;\n}\n.navbar__menu {\r\n  height: 0px;\r\n  overflow: hidden;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  color: #fff;\r\n  transition: all 350ms ease-in-out;\r\n  z-index: 102121;\r\n  position: relative;\n}\n.munushow {\r\n  height: 35vh;\n}\n.menu__describtion {\r\n  text-align: start;\r\n  padding: 20px 0px;\r\n  font-size: 18px;\r\n  line-height: 26px;\n}\n.menu__links {\r\n  padding: 0;\r\n  text-align: center;\r\n  color: white;\r\n  font-weight: 800;\r\n  font-size: 20px;\n}\n.menu__links li {\r\n  list-style-type: none;\r\n  margin: 0;\r\n  padding: 0;\r\n  margin-bottom: 10px;\n}\n.navbar__search {\r\n  height: 0;\r\n  overflow: hidden;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: flex-end;\r\n  align-items: center;\r\n  padding-top: 0;\r\n  transition: all 350ms ease-in-out;\r\n  padding-bottom: 20px;\n}\n.searchshow {\r\n  height: 150px;\r\n  padding-top: 25px;\r\n  padding-bottom: 25;\n}\n.search__search-by-name,\r\n.search__search-parameters {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: center;\r\n  margin: 0 auto;\r\n  padding: 10px;\r\n  width: 70vw;\r\n  height: 26px;\r\n  background-color: rgb(255, 255, 255);\r\n  border-radius: 80px;\r\n  font-size: 15px;\r\n  box-shadow: 0px 3px 17px 0px rgba(148, 148, 148, 0.123);\n}\n.search__search-parameters {\r\n  background-color: rgba(255, 255, 255, 0.671);\r\n  box-shadow: none;\n}\n.search__search-by-name {\r\n  opacity: 1;\r\n  transition: all 350ms ease-in-out;\r\n  position: fixed;\r\n  top: 76px;\r\n  z-index: 1200;\n}\n.searchfixed {\r\n  z-index: 1200;\r\n  opacity: 1;\r\n  top: calc(100px);\n}\n.searchdown {\r\n  top: calc(35vh + 75px);\n}\n.search__search-by-name i {\r\n  line-height: 26px;\r\n  position: relative;\r\n  color: black;\r\n  padding-right: 10px;\n}\n.search__search-by-name input,\r\n.search__search-parameters select {\r\n  width: 100%;\r\n  background-color: transparent;\r\n  border: none;\r\n  padding-left: 10px;\r\n  outline: none;\n}\n.search__search-by-name:hover {\r\n  opacity: 1;\n}\n.search__search-by-name input::-webkit-input-placeholder {\r\n  color: rgba(0, 0, 0, 0.596);\r\n  font-weight: 500;\r\n  font-family: Arial;\n}\n.search__search-by-name input::-moz-placeholder {\r\n  color: rgba(0, 0, 0, 0.596);\r\n  font-weight: 500;\r\n  font-family: Arial;\n}\n.search__search-by-name input:-ms-input-placeholder {\r\n  color: rgba(0, 0, 0, 0.596);\r\n  font-weight: 500;\r\n  font-family: Arial;\n}\n.search__search-by-name input::-ms-input-placeholder {\r\n  color: rgba(0, 0, 0, 0.596);\r\n  font-weight: 500;\r\n  font-family: Arial;\n}\n.search__search-by-name input::placeholder {\r\n  color: rgba(0, 0, 0, 0.596);\r\n  font-weight: 500;\r\n  font-family: Arial;\n}\n.searchbynamenoopacity {\r\n  opacity: 0.3;\r\n  /* transition: all 350ms ease-in-out; */\n}\n.hideSearchBar{\r\n  opacity: 0;\n}\n.collapseNavbarHeader{\r\n  height: 10px;\n}\r\n", ""]);
 
 // exports
 
@@ -7837,7 +7935,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat);", ""]);
 
 // module
-exports.push([module.i, "\n.group{\r\n    margin: 30px;\r\n    background-color: #ECE5DD;\r\n    height: 100px;\r\n    margin-bottom: 35px;\r\n    border-radius: 5px;\r\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12);\r\n    margin-top: 60px;\r\n    position: relative;\n}\n.backcard{\r\n    position: relative;\r\n    background-color: #FFF;\r\n    width: 100%;\r\n    height: 80px;\n}\n.backcard .course_name{\r\n    text-align: left;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    font-family: 'Segoe UI';\r\n    padding: 0 75px;\r\n    position: relative;\r\n    top: 17.5px;\r\n    letter-spacing: 0.05555555rem;\n}\n.backcard .course_instructor{\r\n    text-align: left;\r\n    padding: 5px 75px;\r\n    font-size: 13px;\n}\n.circle{\r\n    width: 45px;\r\n    height: 45px;\r\n    background-color: #00bfa5;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 15px;\r\n    line-height: 100px;\r\n    margin-top: 17.5px;\n}\n.circle p{\r\n    font-family: 'Montserrat';\r\n    line-height: 55px;\r\n    text-align: center;\r\n    color: #FFF;\r\n    font-weight: 400;\r\n    font-size: 13px;\r\n    top: -17px;\r\n    left: 8px;\r\n    position: absolute;\n}\n.course_information{\r\n    font-family: 'Segoe UI';\r\n    line-height: 2px;\r\n    font-size: 12px;\r\n    position: absolute;\r\n    bottom: 0;\r\n    margin-left: 10px;\r\n    font-family: 'Quicksand', sans-serif;\n}\n.course_information p{\r\n    text-align: left;\n}\n.join_button{\r\n    text-decoration: none;\r\n    color: rgb(0, 0, 0);\r\n    font-family: 'Montserrat';\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 40.5px;\n}\n.last_update{\r\n    font-family: 'Segoe UI';\r\n    position: absolute;\r\n    bottom: -30px;\r\n    width: 100%;\r\n    text-align: center;\r\n    color: #AE793C;\r\n    font-size: 12px;\n}\r\n", ""]);
+exports.push([module.i, "\n.group{\n    margin: 30px;\n    background-color: #ECE5DD;\n    height: 100px;\n    margin-bottom: 35px;\n    border-radius: 5px;\n    box-shadow: 0 1px 3px rgba(0,0,0,0.12);\n    margin-top: 60px;\n    position: relative;\n}\n.backcard{\n    position: relative;\n    background-color: #FFF;\n    width: 100%;\n    height: 80px;\n}\n.backcard .course_name{\n    text-align: left;\n    font-weight: 400;\n    font-size: 18px;\n    font-family: 'Segoe UI';\n    padding: 0 75px;\n    position: relative;\n    top: 17.5px;\n    letter-spacing: 0.05555555rem;\n}\n.backcard .course_instructor{\n    text-align: left;\n    padding: 5px 75px;\n    font-size: 13px;\n}\n.circle{\n    width: 45px;\n    height: 45px;\n    background-color: #00bfa5;\n    border-radius: 50%;\n    position: absolute;\n    top: 0px;\n    left: 15px;\n    line-height: 100px;\n    margin-top: 17.5px;\n}\n.circle p{\n    font-family: 'Montserrat';\n    line-height: 55px;\n    text-align: center;\n    color: #FFF;\n    font-weight: 400;\n    font-size: 13px;\n    top: -17px;\n    left: 8px;\n    position: absolute;\n}\n.course_information{\n    font-family: 'Segoe UI';\n    line-height: 2px;\n    font-size: 12px;\n    position: absolute;\n    bottom: 0;\n    margin-left: 10px;\n    font-family: 'Quicksand', sans-serif;\n}\n.course_information p{\n    text-align: left;\n}\n.join_button{\n    text-decoration: none;\n    color: rgb(0, 0, 0);\n    font-family: 'Montserrat';\n    position: absolute;\n    right: 20px;\n    top: 40.5px;\n}\n.last_update{\n    font-family: 'Segoe UI';\n    position: absolute;\n    bottom: -30px;\n    width: 100%;\n    text-align: center;\n    color: #AE793C;\n    font-size: 12px;\n}\n", ""]);
 
 // exports
 
@@ -7856,7 +7954,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.pagination {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  padding: 0 40px;\n}\n.pagination li {\n  list-style-type: none;\n  display: inline-block;\n  background-color: rgba(0, 191, 166, 0.356);\n  padding: 10px;\n  width: 10px;\n  height: 10px;\n  line-height: 10px;\n  border-radius: 50%;\n  text-decoration: none;\n  color: #fff;\n}\n.pagination a {\n  text-decoration: none;\n  color: #fff;\n}\n.page-item.pagination-page-nav.active {\n  background-color: rgb(0, 191, 165);\n}\n", ""]);
+exports.push([module.i, "\n.pagination {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  padding: 0 40px;\n}\n.pagination li {\r\n  list-style-type: none;\r\n  display: inline-block;\r\n  background-color: rgba(0, 191, 166, 0.356);\r\n  padding: 10px;\r\n  width: 10px;\r\n  height: 10px;\r\n  line-height: 10px;\r\n  border-radius: 50%;\r\n  text-decoration: none;\r\n  color: #fff;\n}\n.pagination a {\r\n  text-decoration: none;\r\n  color: #fff;\n}\n.page-item.pagination-page-nav.active {\r\n  background-color: rgb(0, 191, 165);\n}\r\n", ""]);
 
 // exports
 
@@ -7875,7 +7973,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.loginpage{\n    height: 60vh;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    position: relative;\n    margin:auto;\n    margin-top:50px;\n}\n.loginform__username, .loginform__password{\n    margin: 30px;\n}\n.loginform__username input, .loginform__password input{\n    width: 80%;\n    padding:14px;\n    border: 1.5px solid rgb(250, 250, 250);\n    border-radius: 15px;\n    font-size: 16px;\n    outline: none;\n    box-shadow: 10px 6px 27px -23px rgba(0,0,0,0.75);\n}\n.loginform__username input:focus, .loginform__password input:focus{\n    border: 2px solid #77d7c988\n}\n.title{\n    margin: 0;\n    margin-bottom: 10px;\n}\n.loginform__submit{\n    margin: 30px;\n}\n.loginform__submit button{\n    margin-top: 10px;\n    width: 50%;\n    border-radius: 40px;\n    display: inline-block;\n    font-size: 15px;\n    font-weight: 500;\n    letter-spacing: .071em;\n    line-height: 10px;\n    padding: 18px 32px;\n    text-transform: uppercase;\n    white-space: nowrap;\n    background-color: #fff;\n    border: 2px solid #77d7c8;\n    color: #1cb39b;\n}\n\n", ""]);
+exports.push([module.i, "\n.loginPage {\r\n  height: 70vh;\r\n  display: flex;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  position: relative;\r\n  margin: auto;\r\n  margin-top: 50px;\n}\n.loginForm {\r\n  /* margin: 0 3rem; */\r\n  width: 70%;\r\n  margin: 10px auto;\r\n  position: relative;\n}\n.loginform__username,\r\n.loginform__password,\r\n.loginform__confirm-password,\r\n.loginform__email {\r\n  margin: 0 0px;\r\n  margin-top: 12px;\n}\n.loginform__username input,\r\n.loginform__password input,\r\n.loginform__confirm-password input,\r\n.loginform__email input {\r\n  padding: 9px 14px;\r\n  background-color: #f8f8f8;\r\n  border: 1.5px solid rgb(250, 250, 250);\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n  outline: none;\r\n  box-shadow: 10px 6px 27px -23px rgba(0, 0, 0, 0.911);\r\n  box-sizing: border-box;\r\n  width: 100%;\n}\n.loginform__username input:focus,\r\n.loginform__password input:focus,\r\n.loginform__confirm-password input:focus,\r\n.loginform__email input:focus {\r\n  border: 2px solid #77d7c988;\n}\n.title {\r\n  margin: 0;\r\n  margin-bottom: 30px;\r\n  font-weight: 800;\r\n  z-index: -1;\n}\r\n\r\n/* =================================== */\n.username_text {\r\n  margin: 0;\r\n  text-align: left;\n}\n.loginform__submit {\r\n  margin: 30px;\n}\n.loginform__submit button {\r\n  margin-top: 10px;\r\n  border-radius: 5px;\r\n  display: inline-block;\r\n  font-size: 15px;\r\n  font-weight: 500;\r\n  letter-spacing: 0.071em;\r\n  line-height: 10px;\r\n  padding: 18px 32px;\r\n  text-transform: uppercase;\r\n  white-space: nowrap;\r\n  background-color: #1cb39b;\r\n  border: 2px solid #ffffff;\r\n  color: #ffffff;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -7894,7 +7992,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.signupPage {\n  height: 70vh;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  position: relative;\n  margin: auto;\n  margin-top: 50px;\n}\n.signupForm {\n  /* margin: 0 3rem; */\n  width: 70%;\n  margin: 0 auto;\n  position: relative;\n}\n.signupform__username,\n.signupform__password,\n.signupform__confirm-password,\n.signupform__email {\n  margin: 0 0px;\n  margin-top: 12px;\n}\n.signupform__username input,\n.signupform__password input,\n.signupform__confirm-password input,\n.signupform__email input {\n  padding: 9px 14px;\n  background-color: #f8f8f8;\n  border: 1.5px solid rgb(250, 250, 250);\n  border-radius: 5px;\n  font-size: 16px;\n  outline: none;\n  box-shadow: 10px 6px 27px -23px rgba(0, 0, 0, 0.911);\n  box-sizing: border-box;\n  width: 100%;\n}\n.signupform__username input:focus,\n.signupform__password input:focus,\n.signupform__confirm-password input:focus,\n.signupform__email input:focus {\n  border: 2px solid #77d7c988;\n}\n.title {\n  margin: 0;\n  margin-bottom: 10px;\n  font-weight: 800;\n  z-index: -1;\n}\n\n/* =================================== */\n.username_text {\n  margin: 0;\n  text-align: left;\n}\n.signupform__submit {\n  margin: 30px;\n}\n.signupform__submit button {\n  margin-top: 10px;\n  border-radius: 5px;\n  display: inline-block;\n  font-size: 15px;\n  font-weight: 500;\n  letter-spacing: 0.071em;\n  line-height: 10px;\n  padding: 18px 32px;\n  text-transform: uppercase;\n  white-space: nowrap;\n  background-color: #1cb39b;\n  border: 2px solid #ffffff;\n  color: #ffffff;\n}\n.validation-text {\n  font-size: 14px;\n  text-align: left;\n  color: red;\n}\n", ""]);
+exports.push([module.i, "\n.signupPage {\r\n  height: 70vh;\r\n  display: flex;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  position: relative;\r\n  margin: auto;\r\n  margin-top: 50px;\n}\n.signupForm {\r\n  /* margin: 0 3rem; */\r\n  width: 70%;\r\n  margin: 10px auto;\r\n  position: relative;\n}\n.signupform__username,\r\n.signupform__password,\r\n.signupform__confirm-password,\r\n.signupform__email {\r\n  margin: 0 0px;\r\n  margin-top: 12px;\n}\n.signupform__username input,\r\n.signupform__password input,\r\n.signupform__confirm-password input,\r\n.signupform__email input {\r\n  padding: 9px 14px;\r\n  background-color: #f8f8f8;\r\n  border: 1.5px solid rgb(250, 250, 250);\r\n  border-radius: 5px;\r\n  font-size: 16px;\r\n  outline: none;\r\n  box-shadow: 10px 6px 27px -23px rgba(0, 0, 0, 0.911);\r\n  box-sizing: border-box;\r\n  width: 100%;\n}\n.signupform__username input:focus,\r\n.signupform__password input:focus,\r\n.signupform__confirm-password input:focus,\r\n.signupform__email input:focus {\r\n  border: 2px solid #77d7c988;\n}\n.title {\r\n  margin: 0;\r\n  margin-bottom: 30px;\r\n  font-weight: 800;\r\n  z-index: -1;\n}\r\n\r\n/* =================================== */\n.username_text {\r\n  margin: 0;\r\n  text-align: left;\n}\n.signupform__submit {\r\n  margin: 30px;\n}\n.signupform__submit button {\r\n  margin-top: 10px;\r\n  border-radius: 5px;\r\n  display: inline-block;\r\n  font-size: 15px;\r\n  font-weight: 500;\r\n  letter-spacing: 0.071em;\r\n  line-height: 10px;\r\n  padding: 18px 32px;\r\n  text-transform: uppercase;\r\n  white-space: nowrap;\r\n  background-color: #1cb39b;\r\n  border: 2px solid #ffffff;\r\n  color: #ffffff;\n}\n.validation-text {\r\n  font-size: 14px;\r\n  text-align: left;\r\n  color: red;\n}\r\n", ""]);
 
 // exports
 
@@ -40776,40 +40874,99 @@ var render = function() {
           [
             _vm._m(0),
             _vm._v(" "),
-            _c(
-              "ul",
-              { staticClass: "menu__links" },
-              [
-                _c("router-link", { attrs: { tag: "li", to: "/login" } }, [
-                  _c(
-                    "span",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.toggleMunu()
-                        }
-                      }
-                    },
-                    [_vm._v("Login")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("router-link", { attrs: { tag: "li", to: "/signup" } }, [
-                  _c(
-                    "span",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.toggleMunu()
-                        }
-                      }
-                    },
-                    [_vm._v("Sign up")]
-                  )
-                ])
-              ],
-              1
-            )
+            !_vm.$auth.check()
+              ? _c(
+                  "ul",
+                  { staticClass: "menu__links" },
+                  [
+                    _c("router-link", { attrs: { tag: "li", to: "/login" } }, [
+                      _c(
+                        "span",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.toggleMunu()
+                            }
+                          }
+                        },
+                        [_vm._v("Login")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("router-link", { attrs: { tag: "li", to: "/signup" } }, [
+                      _c(
+                        "span",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.toggleMunu()
+                            }
+                          }
+                        },
+                        [_vm._v("Sign up")]
+                      )
+                    ])
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.$auth.check()
+              ? _c(
+                  "ul",
+                  { staticClass: "menu__links" },
+                  [
+                    _c("router-link", { attrs: { tag: "li", to: "/login" } }, [
+                      _c(
+                        "span",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.toggleMunu()
+                            }
+                          }
+                        },
+                        [_vm._v("Welocme " + _vm._s(_vm.$auth.user().fname))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("router-link", { attrs: { tag: "li", to: "/signup" } }, [
+                      _c(
+                        "span",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.toggleMunu()
+                            }
+                          }
+                        },
+                        [_vm._v("Add New Group")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("router-link", { attrs: { tag: "li", to: "/signup" } }, [
+                      _c(
+                        "span",
+                        {
+                          on: {
+                            click: [
+                              function($event) {
+                                $event.preventDefault()
+                                return _vm.$auth.logout()
+                              },
+                              function($event) {
+                                return _vm.toggleMunu()
+                              }
+                            ]
+                          }
+                        },
+                        [_vm._v("Logout")]
+                      )
+                    ])
+                  ],
+                  1
+                )
+              : _vm._e()
           ]
         ),
         _vm._v(" "),
@@ -41021,37 +41178,86 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "loginPage" }, [
+    _c("h1", { staticClass: "title" }, [_vm._v("Login")]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        staticClass: "loginForm",
+        attrs: { autocomplete: "off", action: "", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.login($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "loginform__email" }, [
+          _c("p", { staticClass: "username_text" }, [_vm._v("Email")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            attrs: { type: "email" },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "validation-text" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "loginform__password" }, [
+          _c("p", { staticClass: "username_text" }, [_vm._v("Password")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.password,
+                expression: "password"
+              }
+            ],
+            attrs: { type: "password" },
+            domProps: { value: _vm.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.password = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "loginpage" }, [
-      _c("h1", { staticClass: "title" }, [_vm._v("Login")]),
-      _vm._v(" "),
-      _c(
-        "form",
-        { staticClass: "loginForm", attrs: { action: "", method: "post" } },
-        [
-          _c("div", { staticClass: "loginform__username" }, [
-            _c("input", { attrs: { type: "text", placeholder: "Username" } })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "loginform__password" }, [
-            _c("input", {
-              attrs: { type: "password", placeholder: "Password" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "loginform__submit" }, [
-            _c("button", { attrs: { type: "submit" } }, [
-              _vm._v("\n                Login\n            ")
-            ])
-          ])
-        ]
-      )
+    return _c("div", { staticClass: "loginform__submit" }, [
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Login")])
     ])
   }
 ]
@@ -41114,11 +41320,6 @@ var render = function() {
                 _vm.fname = $event.target.value
               }
             }
-          }),
-          _vm._v(" "),
-          _c("p", {
-            staticClass: "validation-text",
-            domProps: { textContent: _vm._s(_vm.nameValidation) }
           })
         ]),
         _vm._v(" "),
@@ -41210,7 +41411,7 @@ var render = function() {
           _vm._v(" "),
           _c("p", {
             staticClass: "validation-text",
-            domProps: { textContent: _vm._s(_vm.password_confirmation) }
+            domProps: { textContent: _vm._s(_vm.confirmPasswordValidation) }
           })
         ]),
         _vm._v(" "),
@@ -41238,7 +41439,10 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("p", { staticClass: "validation-text" })
+          _c("p", {
+            staticClass: "validation-text",
+            domProps: { textContent: _vm._s(_vm.emailValidation) }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "signupform__submit" }, [
@@ -56421,7 +56625,7 @@ vue__WEBPACK_IMPORTED_MODULE_3___default.a.router = _router__WEBPACK_IMPORTED_MO
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]); // Set Vue authentication
 
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_5___default.a, axios__WEBPACK_IMPORTED_MODULE_1___default.a);
-axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.baseURL = "".concat("http://127.0.0.1:8001", "/api");
+axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.baseURL = "".concat("http://127.0.0.1:8000", "/api");
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4___default.a, _auth__WEBPACK_IMPORTED_MODULE_8__["default"]); // Load Index
 
 vue__WEBPACK_IMPORTED_MODULE_3___default.a.component('index', _Index__WEBPACK_IMPORTED_MODULE_7__["default"]);
@@ -56732,17 +56936,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_vue_vue_type_template_id_3b6adb30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=3b6adb30& */ "./resources/js/pages/Login.vue?vue&type=template&id=3b6adb30&");
-/* harmony import */ var _Login_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=style&index=0&lang=css& */ "./resources/js/pages/Login.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=script&lang=js& */ "./resources/js/pages/Login.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Login_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Login.vue?vue&type=style&index=0&lang=css& */ "./resources/js/pages/Login.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Login_vue_vue_type_template_id_3b6adb30___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Login_vue_vue_type_template_id_3b6adb30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -56756,6 +56962,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/pages/Login.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Login.vue?vue&type=script&lang=js&":
+/*!***************************************************************!*\
+  !*** ./resources/js/pages/Login.vue?vue&type=script&lang=js& ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Login.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Login.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -56915,7 +57135,7 @@ var routes = [{
   }
 }, {
   path: '/login',
-  name: 'login',
+  name: 'Login',
   component: _pages_Login__WEBPACK_IMPORTED_MODULE_3__["default"],
   meta: {
     auth: false
@@ -56948,8 +57168,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jdawe\Desktop\website-uniwhats\UniWhats\website\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jdawe\Desktop\website-uniwhats\UniWhats\website\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Faiqah\Desktop\SideProjects\UniWhats\website\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Faiqah\Desktop\SideProjects\UniWhats\website\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

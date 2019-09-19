@@ -20,12 +20,23 @@
         <p class="menu__describtion">
           <b>UniWhats</b> is the home of student's whatsapp groups. Currently serving Saudi Universites only
         </p>
-        <ul class="menu__links">
-          <router-link tag="li" to="/login">
+        <ul v-if="!$auth.check()" class="menu__links">
+          <router-link  tag="li" to="/login">
             <span v-on:click="toggleMunu()">Login</span>
           </router-link>
           <router-link tag="li" to="/signup">
             <span v-on:click="toggleMunu()">Sign up</span>
+          </router-link>
+        </ul>
+        <ul v-if="$auth.check()" class="menu__links">
+          <router-link  tag="li" to="/login">
+            <span v-on:click="toggleMunu()">Welocme {{ $auth.user().fname }}</span>
+          </router-link>
+          <router-link tag="li" to="/signup">
+            <span v-on:click="toggleMunu()">Add New Group</span>
+          </router-link>
+          <router-link tag="li" to="/signup">
+            <span @click.prevent="$auth.logout()" v-on:click="toggleMunu()">Logout</span>
           </router-link>
         </ul>
       </div>
@@ -154,6 +165,7 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', this.onScroll)
+ 
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll)

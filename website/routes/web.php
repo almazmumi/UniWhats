@@ -18,20 +18,21 @@
 
 
 
-Auth::routes();
 
-Route::prefix('auth') -> group(function(){
-    Route::get('init', 'AppController@init');
-    Route::post('login', 'AppController@login');
-    Route::post('register', 'AppController@register');
-    Route::post('logout', 'AppController@logout');
-    Route::post('login', 'AppController@login');
 
-});
+
 
 
 // Route to handle page reload in Vue except for api routes
 // Route::get('/{any?}', function (){return view('spa');})->where('any', '^(?!api\/)[\/\w\.-]*');
 
 
-Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+// Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+
+
+// Route to handle page reload in Vue except for api routes
+
+
+Route::get('/{any?}', function (){
+    return view('spa');
+})->where('any', '^(?!api\/)[\/\w\.-]*');

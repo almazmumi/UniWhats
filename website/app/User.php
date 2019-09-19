@@ -17,7 +17,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'fname','lname', 'email', 'password',
     ];
 
     /**
@@ -39,7 +39,7 @@ class User extends Authenticatable implements JWTSubject
     ];
 
 
-
+    public $primaryKey = 'u_id';
     public function groups(){
         return $this->hasMany("App\Group");
     }

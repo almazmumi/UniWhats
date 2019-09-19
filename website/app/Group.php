@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    public $primaryKey = 'id';
+    public $primaryKey = 'g_id';
     public $timestamps = true;
 
     public function comments(){
