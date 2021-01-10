@@ -7,9 +7,9 @@ UniWhats beta helps the students to reach out to their collegues faster and easi
 
 # Screenshots
 
-![alt text](https://github.com/almazmumi/UniWhats/blob/master/screenshot%201.png)
-![alt text](https://github.com/almazmumi/UniWhats/blob/master/screenshot%202.png)
-![alt text](https://github.com/almazmumi/UniWhats/blob/master/screenshot%203.png)
+![Screenshot](https://github.com/almazmumi/UniWhats/blob/master/screenshot%201.png)
+![Screenshot](https://github.com/almazmumi/UniWhats/blob/master/Screenshot%202.png)
+![Screenshot](https://github.com/almazmumi/UniWhats/blob/master/Screenshot%203.png)
 
 
 # Credit
